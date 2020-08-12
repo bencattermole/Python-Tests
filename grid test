@@ -1,0 +1,45 @@
+width = 400;
+height = 400;
+
+grid = []
+
+def setup():
+    size(height,width);
+    background(255);
+
+
+def adrand(butt):
+    grid[butt][2] = 1
+    for i in range(0,len(grid)):
+        coords = grid[int(random(0,1444))]
+        if coords[2] == 1:
+            fill(0)
+            rect(coords[0],coords[1],10,10)
+
+pos = [627]
+
+def draw():
+    
+    background(255);
+    
+    for y in range(10,height-10,10):
+        for x in range(10,width-10,10):
+            point(y,x)
+            grid.append([x,y,0])
+    
+    value = pos[len(pos)-1]
+    valueCheck = pos[len(pos)-1]
+    
+    if keyPressed and key == 'w':
+        value -= 38
+    
+    if value < 0:
+        value = 1425
+    pos.append(value)
+    
+    
+    adrand(pos[len(pos)-1])
+    pos.reverse()
+    pos.pop()
+    pos.reverse()   
+    print(pos)
